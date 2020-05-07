@@ -1,10 +1,10 @@
 {
-  "name": "nodemassak",
-  "productName": "nodemassak",
-  "version": "1.0.0",
-  "description": "Программа для работы с весами Масса-К по Ethernet",
-  "repository": "https://github.com/zhiliv/nodeMassaK",
-  "main": "dist/main.js",
+	"appBundleId": "com.markotron.myapp",
+	"name": "markotron",
+	"productName": "Markotron - Electron Boilerplate",
+	"version": "2.0.0",
+	"description": "Electron Boilerplate with Marko & Webpack",
+	"main": "dist/main.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=production electron .",
 		"build": "cross-env NODE_ENV=production webpack --progress",
@@ -15,6 +15,16 @@
 		"package-windows": "npm run build && cross-env NODE_ENV=production PACKAGE_PLATFORM=win32 PACKAGE_ARCH=all node build/package.js",
 		"release": "npm run package-mac && npm run package-linux && npm run package-windows"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Teddy95/markotron.git"
+	},
+	"author": "Andre Sieverding",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Teddy95/markotron/issues"
+	},
+	"homepage": "https://github.com/Teddy95/markotron#readme",
 	"devDependencies": {
 		"@marko/webpack": "^6.0.0",
 		"cross-env": "^7.0.2",
