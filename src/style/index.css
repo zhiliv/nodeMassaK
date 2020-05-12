@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./../font/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(./../font/MaterialIcons-Regular.woff2) format('woff2'),
+    url(./../font/MaterialIcons-Regular.woff) format('woff'),
+    url(./../font/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: white;
+  overflow: hidden;
+}
+
+.container{
+  border: 1px solid gray;
+  height: 100vh
+}
+
+
+.w-100{
+  width: 100%;
+}
+
+.status{
+  font-size: 1.2rem;
+}
+
+.on{
+  color: green;
+}
+
+.off{
+  color: red;
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.dropdown-content.select-dropdown span{
+  color: #212121 !important
+}
+
+.tbl{
+
+  overflow-y: scroll !important;
+}
+
+
+tbody {
+  display:block;
+  height:40vh;
+  overflow:auto;
+  }
+  thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+  }
+  thead {
+  width: calc( 100% - 1em )
+  }
+  table {
+  width:100%;
+  }
+
+  .export{
+    position: absolute;
+    bottom: 15px;
+    right: 10%;
+  }

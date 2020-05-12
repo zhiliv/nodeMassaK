@@ -1,46 +1,82 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-  app.quit();
+const moment = require('moment');
+if (require('electron-squirrel-startup')) {
+	app.quit();
 }
+try {
+	require('electron-reloader')(module);
+} catch (_) {}
+const { ipcMain } = require('electron');
+const fs = require('fs');
+var winax = require('winax');
+var AXO = require('axo');
+var con = new AXO('MassaKDriver100.Scales');
+var CONNECT
+var IND = 0
 
 const createWindow = () => {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-  });
+	const mainWindow = new BrowserWindow({
+		width: 800,
+		height: 600,
+		webPreferences: {
+			preload: path.join(__dirname, './js/render.js'),
+		},
+		autoHideMenuBar: true,
+	});
 
-  // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+	mainWindow.loadFile(path.join(__dirname, 'index.html'));
+	mainWindow.webContents.openDevTools();
 };
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
-
-// Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+	if (process.platform !== 'darwin') {
+		app.quit();
+	}
 });
 
 app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+	if (BrowserWindow.getAllWindows().length === 0) {
+		createWindow();
+	}
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+require('electron-reload')(__dirname);
+if (require('electron-squirrel-startup')) {
+	app.quit();
+}
+
+ipcMain.on('getSetting', async (event, arg) => {
+	event.returnValue = await fs.readFileSync('config/config.json').toString();
+});
+
+ipcMain.on('save-setting', (event, arg) => {
+	fs.writeFile('config/config.json', JSON.stringify(arg), (err) => {
+		event.returnValue = err;
+	});
+});
+
+ipcMain.on('getWeigth', (event, arg) => {
+  IND++
+  if(CONNECT == 0){
+    con.ReadWeight
+    let result = {type: 'success', time: moment().format('YYYY.MM.DD HH:mm:ss'),
+    weigth: con.Weight,
+    ind: IND
+  };
+  event.returnValue = result;
+  }
+ else{
+   let result = {type: 'error'}
+   event.returnValue = result;
+ }
+
+});
+
+ipcMain.on('connect', (event, arg) => {
+  let param =  JSON.parse(fs.readFileSync('config/config.json').toString())
+  con.Connection =  `${param.ipAdress}:${param.port}`
+  CONNECT = con.OpenConnection
+  IND = 0
+  event.returnValue = CONNECT
+})

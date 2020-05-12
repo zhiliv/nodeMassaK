@@ -45,7 +45,13 @@
     }
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "axo": "0.0.2",
+    "electron-reload": "^1.5.0",
+    "electron-reloader": "^1.0.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.5.1",
+    "moment": "^2.25.3",
+    "winax": "^1.18.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.50",

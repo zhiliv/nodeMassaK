@@ -1,12 +1,141 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <h1>💖 Hello World!111</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Масса-К</title>
+		<link rel="stylesheet" href="style/index.css" />
+		<link rel="stylesheet" href="./style/materialize.min.css" />
+	</head>
+	<body class="grey lighten-2">
+		<!-- Modal Structure -->
+		<div id="setting" class="modal">
+			<div class="modal-content">
+				<h4>Настройки</h4>
+				<div class="row">
+					<div class="col l9 xl9 input-field">
+						<input
+							placeholder="0.0.0.0"
+							type="text"
+							id="ip-adress"
+							class="validate"
+						/>
+						<label for="ip-adress">Ip адрес весов</label>
+					</div>
+					<div class="col col l9 xl9 input-field">
+						<input placeholder="3128" type="text" id="port" class="validate" />
+						<label for="port">Порт</label>
+					</div>
+					<div class="col l3 xl3">
+						<button
+							class="waves-effect waves-light btn green"
+							id="save-setting"
+						>
+							Сохранить
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat"
+					>Закрыть</a
+				>
+			</div>
+		</div>
+
+		<div class="container grey lighten-5" style="position: relative;">
+			<div class="row z-depth-3" style="padding-bottom: 3%;">
+				<br />
+				<div class="col l3 xl3">
+					<button class="waves-effect waves-light btn w-100 purple darken-4 connect">
+						Подключить
+						<i class="material-icons left">done</i>
+					</button>
+				</div>
+				<div class="col l6 xl6 center">
+					<span class="status">
+						Стауст подключения:
+						<span id="status" class="off">
+							Отключено
+						</span>
+					</span>
+				</div>
+				<div class="col l3 xl3">
+					<button
+						class="waves-effect waves-light btn w-100 blue darken-1 modal-trigger"
+						id="open-setting"
+						data-target="setting"
+					>
+						Настройки <i class="material-icons left">settings</i>
+					</button>
+				</div>
+			</div>
+			<div class="row valign-wrapper">
+        <div class="col l1 xl1 input-field center">
+					<input
+						placeholder="0"
+						id="interval"
+						type="text"
+						class="validate active" disabled
+					/>
+					<label for="interval">Интервал</label>
+        </div>
+				<div class="col l3 xl3 center input-field typeInterval">
+					<select>
+						<option value="1">Секунды</option>
+						<option value="2">Минуты</option>
+						<option value="3">Часы</option>
+					</select>
+					<label>Единица измерения времени</label>
+				</div>
+				<div class="col">
+					<button
+						class="waves-effect waves-light btn w-100 green" id="play"
+						style="width: 50px;" disabled
+					>
+						<i class="material-icons center">play_arrow</i>
+					</button>
+				</div>
+				<div class="col">
+					<button class="waves-effect waves-light btn red stop" style="width: 50px;" disabled>
+						<i class="material-icons center">stop_arrow</i>
+					</button>
+				</div>
+        <div class="col l3 xl3 z-depth-2 center">
+          Прошло времени: 
+          <h5 class="time">0</h5>
+        </div>
+        <div class="col l3 xl3 wheight z-depth-2 center">
+          Текущий вес
+          <h5 id="currentWeight">0</h5>
+        </div>
+
+
+			</div>
+			<div class="row">
+				<div class="col l12 xl12">
+					<table>
+						<thead>
+							<tr>
+								<th>Номер</th>
+								<th>Дата</th>
+								<th>Вес</th>
+							</tr>
+						</thead>
+
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col l3 xl3 offset-l9 offset-xl9 export">
+					<button class="waves-effect waves-light btn green accent-4">
+						Экспортировать
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="./js/materialize.min.js"></script>
+	</body>
 </html>
