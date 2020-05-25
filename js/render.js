@@ -6,9 +6,11 @@ document.onreadystatechange = () => {
 		const $ = require(`jquery`);
 		//при загрузке страницы jquery
 		$(document).ready(async () => {
+	
 				//подключение функций для панели управления
 				//выполнение функций при загрузке страницы
-				require(`./func`);
+				require(`./func.js`);
+				require('./jquery.json.min')
 		});
 	}
 };

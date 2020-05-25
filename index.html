@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Масса-К</title>
-		<link rel="stylesheet" href="style/index.css" />
+    <link rel="stylesheet" href="style/index.css" />
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="./style/materialize.min.css" />
 	</head>
 	<body class="grey lighten-2">
@@ -24,6 +25,10 @@
 					<div class="col col l9 xl9 input-field">
 						<input placeholder="3128" type="text" id="port" class="validate" />
 						<label for="port">Порт</label>
+					</div>
+					<div class="col col l9 xl9 input-field">
+						<input placeholder="1" type="text" id="numWeith" class="validate" />
+						<label for="numWeith">Номер весов(порядковый номер на сервере)</label>
 					</div>
 					<div class="col l3 xl3">
 						<button
@@ -46,26 +51,21 @@
 			<div class="row z-depth-3" style="padding-bottom: 3%;">
 				<br />
 				<div class="col l3 xl3">
-					<button class="waves-effect waves-light btn w-100 purple darken-4 connect">
-						Подключить
-						<i class="material-icons left">done</i>
-					</button>
-				</div>
-				<div class="col l6 xl6 center">
-					<span class="status">
-						Стауст подключения:
-						<span id="status" class="off">
-							Отключено
-						</span>
-					</span>
-				</div>
-				<div class="col l3 xl3">
 					<button
 						class="waves-effect waves-light btn w-100 blue darken-1 modal-trigger"
 						id="open-setting"
 						data-target="setting"
 					>
 						Настройки <i class="material-icons left">settings</i>
+					</button>
+				</div>
+				<div class="col l3 xl3">
+					<button
+						class="waves-effect waves-light btn w-100 blue darken-1"
+						id="clear"
+					
+					>
+						Очистить
 					</button>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 						placeholder="0"
 						id="interval"
 						type="text"
-						class="validate active" disabled
+						class="validate active"
 					/>
 					<label for="interval">Интервал</label>
         </div>
@@ -101,12 +101,12 @@
 					</button>
 				</div>
         <div class="col l3 xl3 z-depth-2 center">
-          Прошло времени: 
-          <h5 class="time">0</h5>
+          <strong> Прошло времени: </strong> 
+          <h5 class="time" style="font-size: 1em">0</h5>
         </div>
         <div class="col l3 xl3 wheight z-depth-2 center">
           Текущий вес
-          <h5 id="currentWeight">0</h5>
+          <h5 style="font-size: 1em" id="currentWeight">0</h5>
         </div>
 
 
@@ -129,13 +129,14 @@
 			</div>
 			<div class="row">
 				<div class="col l3 xl3 offset-l9 offset-xl9 export">
-					<button class="waves-effect waves-light btn green accent-4">
+					<button class="waves-effect waves-light btn green accent-4" id="excel">
 						Экспортировать
+						
 					</button>
 				</div>
 			</div>
 		</div>
-
+		<script src="./js/jquery.js"></script>
 		<script src="./js/materialize.min.js"></script>
 	</body>
 </html>
